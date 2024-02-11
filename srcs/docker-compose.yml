@@ -12,13 +12,13 @@ services:
         image: nginx
 
         ports:
-            - "433:433"
+            - "443:443"
 
         networks:
             - jsebastinet
 
         volumes:
-            - wordpress_data:/var/www/html
+            - wp_data:/var/www/html
 
         restart: always
 
@@ -31,7 +31,7 @@ services:
         image: mariadb
 
         volumes:
-            - wordpress_data:/var/www/html
+            - wp_data:/var/www/html
 
         restart: always
 
@@ -50,7 +50,7 @@ services:
             - mariadb
         
         volumes:
-            - wordpress_data:/var/www/html
+            - wp_data:/var/www/html
         
         restart: always
         
@@ -65,12 +65,12 @@ volumes:
         driver: local
         driver_opts:
           type: none
-          device: /home/jsebasti/data/mysql
+          device: ${HOME}/data/mysql
           o: bind
 
-    wordpress_data:
+    wp_data:
         driver: local
         driver_opts:
             type: none
-            device: /home/jsebasti/data/wordpress
+            device: ${HOME}/data/wordpress
             o: bind

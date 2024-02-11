@@ -15,11 +15,11 @@ COPY conf/www.conf /etc/php/7.4/fpm/pool.d/
 RUN mkdir -p /run/php
 RUN chmod 755 /run/php
 
-COPY ./tools/wp-start.sh /usr/local/bin/wp-start.sh
-RUN chmod +x /usr/local/bin/wp-start.sh
+COPY ./tools/wp.sh /usr/local/bin/wp.sh
+RUN chmod +x /usr/local/bin/wp.sh
 
 EXPOSE 9000
 
 WORKDIR /var/www/html/
 
-ENTRYPOINT [ "/usr/local/bin/wp-start.sh" ]
+ENTRYPOINT [ "/usr/local/bin/wp.sh" ]

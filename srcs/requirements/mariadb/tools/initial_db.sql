@@ -11,4 +11,4 @@ GRANT ALL PRIVILEGES ON jsebastidb.* TO 'jsebasti'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 -- Cambiar la contraseña del usuario root
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('nueva_contraseña');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root1234');

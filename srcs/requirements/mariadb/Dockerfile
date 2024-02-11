@@ -1,4 +1,4 @@
-FROM debian:11.7
+FROM debian:11.8
 
 RUN apt-get update \
 	&& apt-get install -y \
@@ -17,4 +17,8 @@ COPY --chmod=755 tools/initial_db.sql /usr/local/bin/initial_db.sql
 
 RUN mysql_install_db
 
+RUN chmod +x "/usr/local/bin/mariadb.sh"
+
 ENTRYPOINT [ "/usr/local/bin/mariadb.sh" ]
+
+CMD ["mysql" "-u" "${MYSQL_ROOT_USER}" "--password=\"${MYSQL_ROOT_PASSWORD}\"" "<" "/usr/local/bin/initial_db.sql"]

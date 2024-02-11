@@ -3,8 +3,8 @@ all:
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down
 clean:
-	@rm -rf /home/jsebasti/data/mysql/*
-	@rm -rf /home/jsebasti/data/wordpress/*
+	@rm -rf ${HOME}/data/mysql/*
+	@rm -rf ${HOME}/data/wordpress/*
 	@docker stop $$(docker ps -qa);
 	@docker rm $$(docker ps -qa);
 	@docker rmi -f $$(docker images -qa);
