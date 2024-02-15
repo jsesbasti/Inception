@@ -3,10 +3,9 @@ all:
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down
 clean:
-	@rm -rf ${HOME}/data/mysql/*
-	@rm -rf ${HOME}/data/wordpress/*
-	@docker stop $$(docker ps -qa);
-	@docker rm $$(docker ps -qa);
-	@docker rmi -f $$(docker images -qa);
-	@docker volume rm $$(docker volume ls -q);
-	@docker network rm jsebastinet;
+	@sudo rm -rf $(HOME)/data/wordpress/* ;
+	@sudo rm -rf $(HOME)/data/mysql ;
+	@docker rm -f $$(docker ps -qa);
+	@docker rmi -f $$(docker images -q);
+	@docker volume rm -f $$(docker volume ls -q);
+	@docker network rm srcs_jsebastinet;

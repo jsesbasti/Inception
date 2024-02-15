@@ -12,12 +12,13 @@ RUN mkdir -p /var/run/mysqld \
 
 EXPOSE 3306
 
-COPY --chmod=755 tools/mariadb.sh /usr/local/bin/mariadb.sh
-COPY --chmod=755 tools/initial_db.sql /usr/local/bin/initial_db.sql
+COPY tools/mariadb.sh /usr/local/bin/mariadb.sh
+COPY tools/initial_db.sql /usr/local/bin/initial_db.sql
+
+RUN chmod 755 /usr/local/bin/mariadb.sh
+RUN chmod 755 /usr/local/bin/initial_db.sql
 
 RUN mysql_install_db
-
-RUN chmod +x "/usr/local/bin/mariadb.sh"
 
 ENTRYPOINT [ "/usr/local/bin/mariadb.sh" ]
 
