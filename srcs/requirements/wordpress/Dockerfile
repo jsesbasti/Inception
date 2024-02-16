@@ -1,6 +1,7 @@
 FROM debian:11.8
 
 RUN apt-get update
+RUN apt-get install -y apt-utils
 RUN apt-get install -y curl \
 	php7.4-fpm \
 	php7.4-mysqli \

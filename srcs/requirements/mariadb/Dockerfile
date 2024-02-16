@@ -1,8 +1,8 @@
 FROM debian:11.8
 
-RUN apt-get update \
-	&& apt-get install -y \
-	mariadb-server
+RUN apt-get update 
+RUN apt-get install -y apt-utils 
+RUN apt-get install -y mariadb-server
 
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
@@ -20,6 +20,4 @@ RUN chmod 755 /usr/local/bin/initial_db.sql
 
 RUN mysql_install_db
 
-ENTRYPOINT [ "/usr/local/bin/mariadb.sh" ]
-
-CMD ["mysql" "-u" "${MYSQL_ROOT_USER}" "--password=\"${MYSQL_ROOT_PASSWORD}\"" "<" "/usr/local/bin/initial_db.sql"]
+ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/mariadb.sh" ]
