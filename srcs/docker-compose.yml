@@ -59,6 +59,28 @@ services:
         env_file:
             .env
 
+    redis:
+        container_name: redis
+        build: ./requirements/redis
+        image: redis
+
+        ports:
+            - "6379:6379"
+
+        volumes:
+            - wp_data:/var/www/html
+
+        networks:
+            - jsebastinet
+
+        depends_on:
+            - wordpress
+
+        restart: always
+
+        env_file:
+            .env
+
 volumes:
     mariadb_data:
         driver: local
@@ -72,4 +94,11 @@ volumes:
         driver_opts:
             type: none
             device: ${HOME}/data/wordpress
+            o: bind
+
+    redis_data:
+        driver: local
+        driver_opts:
+            type: none
+            device: ${HOME}/data/redis
             o: bind

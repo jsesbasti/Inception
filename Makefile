@@ -3,6 +3,7 @@ all:
 down:
 	@docker-compose -f srcs/docker-compose.yml down
 clean:
+	@docker stop $$(docker ps -qa);
 	@sudo rm -rf $(HOME)/data/wordpress/* ;
 	@sudo rm -rf $(HOME)/data/mysql ;
 	@docker rm -f $$(docker ps -qa);
