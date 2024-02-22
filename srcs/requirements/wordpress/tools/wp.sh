@@ -2,9 +2,8 @@
 
 if [ ! -f ./wp-config.php ]
 then
-
 	wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php -O /var/www/html/adminer.php &> /dev/null
-    wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
+	wget https://raw.githubusercontent.com/Niyko/Hydra-Dark-Theme-for-Adminer/master/adminer.css -O /var/www/html/adminer.css &> /dev/null
 
 	wp core download --allow-root
 	wp config create --allow-root --dbname="${MYSQL_DATABASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --dbhost="${MYSQL_HOSTNAME}"
@@ -14,15 +13,15 @@ then
 	wp theme install inspiro --activate --allow-root
 
     # enable redis cache
-    sed -i "40i define( 'WP_REDIS_HOST', '$WP_REDIS_HOST' );"   wp-config.php
-    sed -i "41i define( 'WP_REDIS_PORT', $WP_REDIS_PORT );"     wp-config.php
-    #sed -i "42i define( 'WP_REDIS_PASSWORD', '$REDIS_PWD' );"   wp-config.php
-    sed -i "42i define( 'WP_REDIS_TIMEOUT', 1 );"               wp-config.php
-    sed -i "43i define( 'WP_REDIS_READ_TIMEOUT', 1 );"          wp-config.php
-    sed -i "44i define( 'WP_REDIS_DATABASE', 0 );\n"            wp-config.php
-	
+	sed -i "40i define( 'WP_REDIS_HOST', '$WP_REDIS_HOST' );"   wp-config.php
+	sed -i "41i define( 'WP_REDIS_PORT', $WP_REDIS_PORT );"     wp-config.php
+	#sed -i "42i define( 'WP_REDIS_PASSWORD', '$REDIS_PWD' );"   wp-config.php
+	sed -i "42i define( 'WP_REDIS_TIMEOUT', 1 );"               wp-config.php
+	sed -i "43i define( 'WP_REDIS_READ_TIMEOUT', 1 );"          wp-config.php
+	sed -i "44i define( 'WP_REDIS_DATABASE', 0 );\n"            wp-config.php
+
 	wp plugin install redis-cache --activate --allow-root
-    wp plugin update --all --allow-root
+    	wp plugin update --all --allow-root
 fi
 
 wp redis enable --allow-root
