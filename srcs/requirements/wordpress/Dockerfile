@@ -5,8 +5,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y curl \
 	php7.4-fpm \
 	php7.4-mysqli \
-	mariadb-client \
-	redis
+	mariadb-client 
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
