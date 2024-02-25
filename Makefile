@@ -10,3 +10,6 @@ clean:
 	@docker rmi -f $$(docker images -q);
 	@docker volume rm -f $$(docker volume ls -q);
 	@docker network rm srcs_jsebastinet;
+	@docker system prune -a -f;
+
+re: clean all

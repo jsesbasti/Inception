@@ -20,4 +20,4 @@ RUN chmod 755 /usr/local/bin/initial_db.sql
 
 RUN mysql_install_db
 
-ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/mariadb.sh" ]
+ENTRYPOINT ["/usr/local/bin/mariadb.sh"]

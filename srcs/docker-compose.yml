@@ -73,10 +73,3 @@ volumes:
             type: none
             device: ${HOME}/data/wordpress
             o: bind
-
-    redis_data:
-        driver: local
-        driver_opts:
-            type: none
-            device: ${HOME}/data/redis
-            o: bind
