@@ -10,6 +10,7 @@ endif
 all:
 	@$(FLAGS) mkdir -p $(DATA)/wordpress;
 	@$(FLAGS) mkdir -p $(DATA)/mysql;
+	@$(FLAGS) mkdir -p $(DATA)/redis;
 	@docker-compose -f srcs/docker-compose.yml up -d --build
 down:
 	@docker-compose -f srcs/docker-compose.yml down

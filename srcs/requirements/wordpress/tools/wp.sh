@@ -7,6 +7,10 @@ then
 	wp core install --allow-root --url="${DOMAIN_NAME}" --title="${WP_TITLE}" --admin_user="${WP_ADMIN}" --admin_password="${WP_ADMIN_PASS}"  --admin_email="${WP_ADMIN_EMAIL}"
 	wp user create ${WP_USER} ${WP_EMAIL} --role='author' --user_pass="${WP_USER_PASS}" --allow-root
 	wp theme install astra --activate --allow-root
+	sed -i "s/.*WP_CACHE_KEY_SALT.*$/define\( 'WP_CACHE_KEY_SALT', 'twagner.42.fr' \);/" /var/www/wordpress/wp-config.php
+	sed -i "s/\"stop editing\" line. \*\//&\ndefine( 'WP_REDIS_HOST', 'redis' );/" /var/www/wordpress/wp-config.php
+	wp plugin install redis-cache --activate --allow-root
+	wp redis enable --allow-root
 fi
 
 /usr/sbin/php-fpm7.4 -F;
