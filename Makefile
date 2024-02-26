@@ -1,4 +1,5 @@
 UNAME	= $(shell uname -s)
+DATA	= $(HOME)/data
 
 ifeq ($(UNAME), Darwin)
 	FLAGS	= 
@@ -7,14 +8,14 @@ else ifeq ($(UNAME), Linux)
 endif
 
 all:
-	if (! -d $(HOME)/data/wordpress); then mkdir -p $(HOME)/data/wordpress; fi
-	if (! -d $(HOME)/data/mysql); then mkdir -p $(HOME)/data/mysql; fi
+	@$(FLAGS) mkdir -p $(DATA)/wordpress;
+	@$(FLAGS) mkdir -p $(DATA)/mysql;
 	@docker-compose -f srcs/docker-compose.yml up -d --build
 down:
 	@docker-compose -f srcs/docker-compose.yml down
 clean:
 	@docker stop $$(docker ps -qa);
-	@$(FLAGS) rm -rf $(HOME)/data/wordpress/* ;
+	@$(FLAGS) rm -rf $(HOME)/data ;
 	@docker rm -f $$(docker ps -qa);
 	@docker rmi -f $$(docker images -q);
 	@docker volume rm -f $$(docker volume ls -q);
