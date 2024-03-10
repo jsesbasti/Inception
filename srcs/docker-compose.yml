@@ -47,6 +47,7 @@ services:
 
         depends_on:
             - mariadb
+            - redis
         
         volumes:
             - wp_data:/var/www/html
@@ -67,13 +68,13 @@ services:
         volumes:
             - redis_data:/data
 
+        ports:
+            - "6379:6379"
+
         restart: always
 
         networks:
             - jsebastinet
-
-        depends_on:
-            - wordpress
 
         env_file:
             .env
