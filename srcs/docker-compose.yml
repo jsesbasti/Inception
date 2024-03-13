@@ -62,7 +62,7 @@ services:
     
     redis:
         container_name: redis
-        build: ./requirements/redis
+        build: ./requirements/bonus/redis
         image: redis
 
         volumes:
@@ -70,6 +70,24 @@ services:
 
         ports:
             - "6379:6379"
+
+        restart: always
+
+        networks:
+            - jsebastinet
+
+        env_file:
+            .env
+
+    filezila:
+        container_name: filezila
+        build: ./requirements/bonus/filezila
+        image: filezila
+
+        ports:
+            - "21:21"
+            - "20:20"
+            - "30000-30009:30000-30009"
 
         restart: always
 
