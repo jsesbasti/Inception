@@ -79,14 +79,18 @@ services:
         env_file:
             .env
 
-    filezila:
-        container_name: filezila
-        build: ./requirements/bonus/filezila
-        image: filezila
+    filezilla:
+        container_name: filezilla
+        build: ./requirements/bonus/filezilla
+        image: filezilla
+
+        volumes:
+            - wp_data
 
         ports:
             - "21:21"
             - "20:20"
+            - "22:22"
             - "30000-30009:30000-30009"
 
         restart: always

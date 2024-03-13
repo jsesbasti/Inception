@@ -9,8 +9,6 @@ RUN adduser hostinger
 
 RUN mkdir -p /home/hostinger/ftp
 
-RUN chmod -R nobody:nogroup /home/hostinger/ftp
-
 RUN chmod a-w /home/hostinger/ftp
 
 COPY conf/vsftpd.conf /etc/vsftpd.conf
