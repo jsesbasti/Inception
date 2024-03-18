@@ -6,7 +6,7 @@ RUN apt-get install -y curl \
 	php7.4-mysqli \
 	2> /dev/null
 
-RUN apt purge apache2 apache2-bin apache2-data apache2-utils -y
+RUN apt-get purge apache2 -y
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
