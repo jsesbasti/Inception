@@ -17,4 +17,4 @@ RUN chmod 755 /usr/local/bin/mariadb.sh
 
 RUN mysql_install_db
 
-ENTRYPOINT ["/usr/local/bin/mariadb.sh"]
+ENTRYPOINT ["sh", "/usr/local/bin/mariadb.sh"]
