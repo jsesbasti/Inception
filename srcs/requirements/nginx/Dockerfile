@@ -1,7 +1,7 @@
 FROM debian:11.8
 
-RUN apt-get update
-RUN apt-get install -y nginx openssl
+RUN apt-get update 2> /dev/null
+RUN apt-get install -y nginx openssl 2> /dev/null
 
 EXPOSE 443
 
