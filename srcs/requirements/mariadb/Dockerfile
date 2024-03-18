@@ -15,6 +15,6 @@ COPY tools/mariadb.sh /usr/local/bin/mariadb.sh
 
 RUN chmod 755 /usr/local/bin/mariadb.sh
 
-RUN mysql_install_db
+RUN mysql_secure_installation
 
 ENTRYPOINT ["sh", "/usr/local/bin/mariadb.sh"]
