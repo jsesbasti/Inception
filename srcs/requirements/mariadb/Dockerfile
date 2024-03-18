@@ -15,8 +15,6 @@ COPY tools/mariadb.sh /usr/local/bin/mariadb.sh
 
 RUN chmod 755 /usr/local/bin/mariadb.sh
 
-RUN rm -rf /etc/apache2
-
 RUN mysql_install_db
 
 ENTRYPOINT ["sh", "/usr/local/bin/mariadb.sh"]
