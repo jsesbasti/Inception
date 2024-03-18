@@ -19,8 +19,6 @@ RUN chmod 755 /run/php
 COPY ./tools/wp.sh /usr/local/bin/wp.sh
 RUN chmod +x /usr/local/bin/wp.sh
 
-RUN rm -rf /etc/apache2
-
 EXPOSE 9000
 
 WORKDIR /var/www/html/
