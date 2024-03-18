@@ -2,7 +2,6 @@ FROM debian:11.8
 
 RUN apt-get update 2> /dev/null
 RUN apt-get install -y mariadb-server 2> /dev/null
-RUN apt-get purge apache2 -y
 
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
@@ -15,6 +14,8 @@ EXPOSE 3306
 COPY tools/mariadb.sh /usr/local/bin/mariadb.sh
 
 RUN chmod 755 /usr/local/bin/mariadb.sh
+
+RUN rm -rf /etc/apache2
 
 RUN mysql_install_db
 

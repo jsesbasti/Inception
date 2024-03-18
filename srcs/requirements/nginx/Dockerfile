@@ -2,7 +2,6 @@ FROM debian:11.8
 
 RUN apt-get update 2> /dev/null
 RUN apt-get install -y nginx openssl 2> /dev/null
-RUN apt-get purge apache2 -y
 
 EXPOSE 443
 
