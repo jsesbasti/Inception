@@ -4,7 +4,6 @@ RUN apt-get update 2> /dev/null
 RUN apt-get install -y curl \
 	php7.4-fpm \
 	php7.4-mysqli \
-	mariadb-client \
 	2> /dev/null
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
